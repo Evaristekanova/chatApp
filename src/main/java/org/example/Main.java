@@ -1,7 +1,21 @@
 package org.example;
 
+import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        SpringApplication.run(Main.class, args);
+    }
+    @Autowired
+    public SettingsService settingsService;
+
+    @PostConstruct
+    public void initialize() {
+        System.out.println("Hello World!, This is my first spring boot application!🚀🚀🚀🚀");
+        System.out.println("Setting: " + settingsService.getSettings());
     }
 }
